@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakhamuri Muralikrishna - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .resume-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 40px 30px 40px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
+        }
+
+        .name {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 8px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e74c3c;
+        }
+
+        .experience-item,
+        .education-item {
+            margin-bottom: 25px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid #3498db;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover,
+        .education-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .item-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .item-company {
+            color: #3498db;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .item-date {
+            color: #7f8c8d;
+            font-style: italic;
+            font-weight: 500;
+            background: #ecf0f1;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+
+        .item-description ul {
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+
+        .item-description li {
+            margin-bottom: 8px;
+            color: #555;
+            position: relative;
+        }
+
+        .item-description li::before {
+            content: '?';
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #e74c3c;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .skill-category h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 5px 0;
+            color: #555;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .skill-list li::before {
+            content: '?';
+            color: #e74c3c;
+            position: absolute;
+            left: 0;
+        }
+
+        .achievements {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #27ae60;
+        }
+
+        .achievements ul {
+            margin-left: 20px;
+        }
+
+        .achievements li {
+            margin-bottom: 10px;
+            color: #555;
+            position: relative;
+        }
+
+        .achievements li::before {
+            content: '?';
+            color: #f39c12;
+            position: absolute;
+            left: -20px;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .resume-container {
+                margin: 10px;
+                padding: 0;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .main-content {
+                padding: 30px 20px;
+            }
+
+            .name {
+                font-size: 2.2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .item-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .resume-container {
+                box-shadow: none;
+                padding: 0;
+            }
+
+            .header {
+                background: #2c3e50 !important;
+                color: white !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1 class="name">Sakhamuri Muralikrishna</h1>
+            <p class="title">DevOps & Cloud Engineer</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>??</span>
+                    <span>muralikrishna583@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>??</span>
+                    <span>+91-8143612355</span>
+                </div>
+                <div class="contact-item">
+                    <span>??</span>
+                    <span>Hyderabad, Telangana</span>
+                </div>
+                <div class="contact-item">
+                    <span>??</span>
+                    <span>linkedin.com/in/sakhamurimuralikrishna</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Professional Summary -->
+            <section class="section">
+                <h2 class="section-title">Career Objective</h2>
+                <p>Dynamic DevOps and Cloud Engineer with 9.5 years of hands-on experience. Adept at designing, deploying, and automating scalable infrastructure. Currently expanding expertise in Azure DevOps, Terraform, Datadog, and Python automation. Seeking opportunities to drive innovation and optimize operations in fast-paced, growth-oriented organizations.</p>
+            </section>
+
+            <!-- Experience Section -->
+            <section class="section">
+                <h2 class="section-title">Professional Experience</h2>
+                
+                <div class="experience-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">Staff Engineer DevOps</div>
+                            <div class="item-company">Altimetrik Pvt. Ltd. (Client – Takeda Pharma)</div>
+                        </div>
+                        <div class="item-date">June 2025 – Present</div>
+                    </div>
+                    <div class="item-description">
+                        <ul>
+                            <li>Automated Terraform code generation for existing AWS resources using Python and tagging strategy</li>
+                            <li>Extracted account-wise infrastructure details to create modular, reusable Terraform modules</li>
+                            <li>Improved visibility and control by mapping resources based on tags and ownership</li>
+                            <li>Streamlined IaC adoption by integrating reverse-engineered code into CI/CD pipelines</li>
+                            <li>Ensured Terraform best practices and security compliance across all generated configurations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">Senior DevOps Engineer</div>
+                            <div class="item-company">Slickbit Technologies (Client – Orkestra Logistics)</div>
+                        </div>
+                        <div class="item-date">July 2023 – May 2025</div>
+                    </div>
+                    <div class="item-description">
+                        <ul>
+                            <li>Designed and maintained CI/CD pipelines using Azure DevOps and Jenkins for seamless application deployment</li>
+                            <li>Implemented scalable infrastructure on Azure Cloud, leveraging Terraform for automated provisioning</li>
+                            <li>Enhanced monitoring and alerting systems using Datadog for improved system reliability</li>
+                            <li>Automated infrastructure tasks using Python, improving operational efficiency</li>
+                            <li>Collaborated with cross-functional teams to streamline deployments and ensure high system availability</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">Senior DevOps Engineer</div>
+                            <div class="item-company">Tectoro Consulting Pvt. Ltd. (Client – Bank of America, RUCKUS Networks)</div>
+                        </div>
+                        <div class="item-date">May 2021 – May 2023</div>
+                    </div>
+                    <div class="item-description">
+                        <ul>
+                            <li>Configured GitLab pipelines and Azure Functions for robust and efficient deployments</li>
+                            <li>Deployed and managed Kubernetes clusters and containerized applications using Docker Swarm</li>
+                            <li>Maintained databases like MongoDB, MySQL, and PostgreSQL, ensuring data consistency and availability</li>
+                            <li>Implemented ELK Stack, Prometheus, and Grafana for comprehensive monitoring and logging solutions</li>
+                            <li>Developed Python scripts for push-button automation of deployment tasks</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">Senior DevOps Engineer</div>
+                            <div class="item-company">Chakravuyha Software Technologies Pvt. Ltd. (Client – WavPe, Smashitlive, Validus)</div>
+                        </div>
+                        <div class="item-date">Oct 2020 – May 2021</div>
+                    </div>
+                    <div class="item-description">
+                        <ul>
+                            <li>Established Azure DevOps pipelines to automate application deployments into Azure App Services</li>
+                            <li>Automated MongoDB backups and restoration processes with shell scripting, improving data reliability</li>
+                            <li>Oversaw and maintained production, QA, and development environments for optimal performance</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">DevOps Engineer</div>
+                            <div class="item-company">Anblicks Solutions Pvt. Ltd. (Client – Zyyah, Agile Stacks)</div>
+                        </div>
+                        <div class="item-date">Oct 2019 – Oct 2020</div>
+                    </div>
+                    <div class="item-description">
+                        <ul>
+                            <li>Deployed and maintained AWS ECS Fargate services and optimized application scalability with ELB and Route53</li>
+                            <li>Automated database backups and log management using shell scripts integrated with AWS S3</li>
+                            <li>Configured IAM roles and security groups to ensure secure AWS operations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">Testing Engineer</div>
+                            <div class="item-company">Annapurna Electronics & Services Pvt. Ltd.</div>
+                        </div>
+                        <div class="item-date">Nov 2015 – Oct 2019</div>
+                    </div>
+                    <div class="item-description">
+                        <ul>
+                            <li>Collaborated with development teams to test and debug software, ensuring defect-free deliveries</li>
+                            <li>Conducted rigorous testing across multiple environments, adhering to software development best practices</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section class="section">
+                <h2 class="section-title">Education</h2>
+                
+                <div class="education-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">Graduation</div>
+                            <div class="item-company">Acharya Nagarjuna University</div>
+                        </div>
+                        <div class="item-date">2015</div>
+                    </div>
+                </div>
+
+                <div class="education-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">Intermediate</div>
+                            <div class="item-company">Sri Chaitanya Junior College, Guntur</div>
+                        </div>
+                        <div class="item-date">2010</div>
+                    </div>
+                </div>
+
+                <div class="education-item">
+                    <div class="item-header">
+                        <div>
+                            <div class="item-title">SSC</div>
+                            <div class="item-company">Sri Kakatiya High School, Nalgonda</div>
+                        </div>
+                        <div class="item-date">2008</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="section">
+                <h2 class="section-title">Key Skills</h2>
+                <div class="achievements">
+                    <ul>
+                        <li><strong>DevOps & CI/CD:</strong> Extensive experience with Jenkins, Azure DevOps, and automation pipelines</li>
+                        <li><strong>Cloud Expertise:</strong> Proficient in Azure Cloud and AWS (EC2, S3, RDS, IAM, Route53, ELB)</li>
+                        <li><strong>Containerization & Orchestration:</strong> Skilled in Docker, Kubernetes, and scalable deployments</li>
+                        <li><strong>Infrastructure as Code (IaC):</strong> Hands-on expertise with Terraform and automated provisioning</li>
+                        <li><strong>Monitoring & Performance:</strong> Proficient in Datadog, Prometheus, Grafana, and log management</li>
+                        <li><strong>Automation & Scripting:</strong> Expertise in Python and shell scripting for infrastructure tasks</li>
+                        <li><strong>Database Management:</strong> Strong experience with MongoDB, MySQL, and PostgreSQL administration</li>
+                        <li><strong>Soft Skills:</strong> Adaptable, collaborative team player with a proactive approach to problem-solving</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Technical Proficiencies Section -->
+            <section class="section">
+                <h2 class="section-title">Technical Proficiencies</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Operating Systems</h4>
+                        <ul class="skill-list">
+                            <li>Windows</li>
+                            <li>UNIX</li>
+                            <li>Linux</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Build & Version Control</h4>
+                        <ul class="skill-list">
+                            <li>Maven</li>
+                            <li>GIT</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>CI/CD & Cloud</h4>
+                        <ul class="skill-list">
+                            <li>Jenkins</li>
+                            <li>Azure DevOps</li>
+                            <li>AWS</li>
+                            <li>Azure Cloud</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Containerization & IaC</h4>
+                        <ul class="skill-list">
+                            <li>Docker</li>
+                            <li>Kubernetes</li>
+                            <li>Terraform</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Monitoring Tools</h4>
+                        <ul class="skill-list">
+                            <li>Datadog</li>
+                            <li>Nagios</li>
+                            <li>Prometheus</li>
+                            <li>Grafana</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Scripting</h4>
+                        <ul class="skill-list">
+                            <li>Python</li>
+                            <li>Shell Scripting</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section class="section">
+                <h2 class="section-title">Professional Strengths</h2>
+                <div class="achievements">
+                    <ul>
+                        <li>Quick learner and adaptable to new technologies and environments</li>
+                        <li>Effective communicator with a focus on teamwork and collaboration</li>
+                        <li>Detail-oriented and committed to delivering high-quality, reliable solutions</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Achievements Section -->
+            <section class="section">
+                <h2 class="section-title">Achievements & Certifications</h2>
+                <div class="achievements">
+                    <ul>
+                        <li>9.5 years of hands-on experience in DevOps and Cloud Engineering</li>
+                        <li>Expertise in Azure DevOps, Terraform, Datadog, and Python automation</li>
+                        <li>Successfully automated Terraform code generation for AWS resources</li>
+                        <li>Led multiple cloud migration projects and infrastructure optimizations</li>
+                        <li>Strong track record of improving deployment efficiency and system reliability</li>
+                        <li>Experience working with major clients including Takeda Pharma, Bank of America, and RUCKUS Networks</li>
+                        <li>Proven ability to work across diverse technology stacks and environments</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
